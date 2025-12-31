@@ -10,6 +10,8 @@ const Authorization = () => {
     const [res, setRes] = useState({});
     const navigate = useNavigate();
 
+    const API_URL = import.meta.env.VITE_CLIENT_URL + "/api";
+
     const handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -22,7 +24,7 @@ const Authorization = () => {
         }
 
         try {
-            const request = await fetch("http://localhost:3000/api/users/login", {
+            const request = await fetch(`${API_URL}/users/login`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data),

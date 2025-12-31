@@ -16,6 +16,8 @@ const Cars = () => {
     const [page, setPage] = useState(1);
     const startIndex = (page - 1) * 6;
 
+    const API_URL = import.meta.env.VITE_CLIENT_URL + "/api";
+
     const handleCreate = async (e) => {
         e.preventDefault();
 
@@ -42,7 +44,7 @@ const Cars = () => {
         };
 
         try {
-            const request = await fetch("http://localhost:3000/api/cars", {
+            const request = await fetch(`${API_URL}/cars`, {
                 method: "POST", 
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data)
@@ -76,7 +78,7 @@ const Cars = () => {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const carApi = await fetch("http://localhost:3000/api/cars");
+                const carApi = await fetch(`${API_URL}/cars`);
                 const carJson = await carApi.json();
                 setCar(carJson);
             } catch (error) {

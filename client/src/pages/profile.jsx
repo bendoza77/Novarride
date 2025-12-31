@@ -27,6 +27,8 @@ const Profile = () => {
     const [five, setFive] = useState(false);
     const [six, setSix] = useState(false);
 
+    const API_URL = import.meta.env.VITE_CLIENT_URL + "/api";
+
     const handleQuestionOne = () => { setOne(!one); setTwo(false); setThree(false); setFour(false); setFive(false); setSix(false); }
     const handleQuestionTwo = () => { setOne(false); setThree(false); setTwo(!two); setFour(false); setFive(false); setSix(false); }
     const handleQuestionThree = () => { setOne(false); setTwo(false); setThree(!three); setFour(false); setFive(false); setSix(false); }
@@ -37,7 +39,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const carApi = await fetch("http://localhost:3000/api/cars");
+                const carApi = await fetch(`${API_URL}/cars`);
                 const carJson = await carApi.json();
                 setCar(carJson);
             } catch (error) {

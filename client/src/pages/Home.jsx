@@ -37,6 +37,8 @@ const Home = () => {
   const { curUser } = useContext(UserContext);
   const [book, setBook] = useState(false);
 
+  const API_URL = import.meta.env.VITE_CLIENT_URL + "/api";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { userFullName, userPhoneNumber, userDate, userLocation } = e.target;
@@ -70,7 +72,7 @@ const Home = () => {
 
     const fetchApi = async () => {
       try {
-        const carApi = await fetch("http://localhost:3000/api/cars");
+        const carApi = await fetch(`${API_URL}/cars`);
         const carJson = await carApi.json();
         setCar(carJson);
       } catch (error) {
