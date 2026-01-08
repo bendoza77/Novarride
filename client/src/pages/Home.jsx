@@ -27,6 +27,7 @@ import fleet3 from "../assets/Screenshot 2025-11-24 191712.png";
 import fleet4 from "../assets/Screenshot 2025-11-24 191724.png";
 import fleet5 from "../assets/Screenshot 2025-11-24 191735.png";
 import faqImg from "../assets/Screenshot 2025-11-25 174359.png";
+import bgImage from "../assets/meritt-thomas-BwBxVVdlpYE-unsplash.jpg";
 import todayImg from "../assets/Screenshot_2025-11-26_180446-removebg-preview.png";
 
 const Home = () => {
@@ -86,7 +87,7 @@ const Home = () => {
   return (
     <>
       <div className="home">
-        <div className="top">
+        <div style={{ backgroundImage: `url(${bgImage})`}} className="top">
           <h1>Looking to save more on <br /> your rental car?</h1>
           <p>Whether you’re planning a weekend getaway, a business trip, or just need a reliable ride <br />
             for the day, we offers a wide range of vehicles to suit your needs.</p>
