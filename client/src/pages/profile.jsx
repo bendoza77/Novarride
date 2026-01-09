@@ -14,6 +14,7 @@ import customerService from "../assets/Screenshot 2025-11-24 191649.png";
 import middleImg from "../assets/Screenshot 2025-11-24 191712.png";
 import locationImg from "../assets/Screenshot 2025-11-24 191724.png";
 import safetyImg from "../assets/Screenshot 2025-11-24 191735.png";
+import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
 
 const Profile = () => {
     const { curUser } = useContext(UserContext);
@@ -52,7 +53,7 @@ const Profile = () => {
     return (
         <>
             <div className="profile_div">
-                <div className="about_top">
+                <div style={{backgroundImage: `url(${bg})`}} className="about_top">
                     <h1>Profile</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>

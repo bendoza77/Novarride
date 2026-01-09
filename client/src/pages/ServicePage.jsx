@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ServiceContext } from "../context/ServiceContext";
+import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
 
 
 
@@ -41,7 +42,7 @@ const ServicePage = () => {
 
     return (
         <div className="servicePage">
-            <div className="about_top">
+            <div style={{backgroundImage: `url(${bg})`}} className="about_top">
                 <h1>{serviceInfo}</h1>
                 <div className="about_nav">
                     <Link to={"/"}><p className="about_home">Home</p></Link>

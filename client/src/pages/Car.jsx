@@ -16,6 +16,7 @@ import generalImg from "../assets/general.png";
 import amenitiesImg from "../assets/ametides.png";
 import plusIcon from "../assets/plus.png";
 import minusIcon from "../assets/minus.png";
+import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
 
 const Car = () => {
   const { carInfo } = useContext(CarContext);
@@ -85,7 +86,7 @@ const Car = () => {
       </div>
 
       <div className="car">
-        <div className="about_top">
+        <div style={{backgroundImage: `url(${bg})`}} className="about_top">
           <h1>{carInfo.title}</h1>
           <div className="about_nav">
             <Link to={"/"}><p className="about_home">Home</p></Link>

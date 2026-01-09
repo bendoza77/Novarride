@@ -6,6 +6,8 @@ import Car from "../components/Car";
 
 import leftArrow from "../assets/left-arrow-removebg-preview.png";
 import rightArrow from "../assets/arrow-removebg-preview (1).png";
+import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
+
 
 const Cars = () => {
 
@@ -91,7 +93,7 @@ const Cars = () => {
     return (
         <>
             <div className="cars_div">
-                <div className="about_top">
+                <div style={{backgroundImage: `url(${bg})`}} className="about_top">
                     <h1>Cars</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>
