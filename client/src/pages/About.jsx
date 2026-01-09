@@ -19,6 +19,8 @@ import fleet2 from "../assets/Screenshot 2025-11-24 191649.png";
 import fleetMiddle from "../assets/Screenshot 2025-11-24 191712.png";
 import fleet3 from "../assets/Screenshot 2025-11-24 191724.png";
 import fleet4 from "../assets/Screenshot 2025-11-24 191735.png";
+import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
+
 
 const About = () => {
 
@@ -55,7 +57,7 @@ const About = () => {
     return (
         <>
             <div className="about">
-                <div className="about_top">
+                <div style={{backgroundImage: `url(${bg})`, backgroundSize: "cover"}} className="about_top">
                     <h1>About Us</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>

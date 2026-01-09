@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import phoneImg from "../assets/phone.png";
 import randomImg from "../assets/random.png";
 import sendImg from "../assets/send.png";
+import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
+
 
 const Contact = () => {
 
@@ -18,7 +20,7 @@ const Contact = () => {
     return (
         <>
             <div className="contact_div">
-                <div className="about_top">
+                <div style={{backgroundImage: `url(${bg})`}} className="about_top">
                     <h1>Contact Us</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>
