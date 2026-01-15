@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema({
 
@@ -38,7 +39,14 @@ const userSchema = new mongoose.Schema({
     reviewId: [{
         type: mongoose.Types.ObjectId,
         ref: "Reviews"
-    }]
+    }],
+
+    verificationCode: String,
+
+    isVerified: {
+        type: Boolean,
+        default: false
+    }
 })
 
 userSchema.pre("save", async function(next) {
@@ -53,6 +61,15 @@ userSchema.pre("save", async function(next) {
 
 userSchema.methods.comparePassword = async (candidate, password) => {
     return await bcrypt.compare(candidate, password);
+}
+
+userSchema.methods.createVerificationCode = function() {
+
+    const code = crypto.randomBytes(12).toString("hex");
+    this.verificationCode = code;
+    return code;
+
+
 }
 
 const User = mongoose.model("Users", userSchema);

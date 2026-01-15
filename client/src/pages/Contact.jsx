@@ -4,6 +4,7 @@ import phoneImg from "../assets/phone.png";
 import randomImg from "../assets/random.png";
 import sendImg from "../assets/send.png";
 import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
+import Map from "../components/Map";
 
 
 const Contact = () => {
@@ -77,6 +78,10 @@ const Contact = () => {
                             <img className="send1" src={sendImg} alt="" />
                         </form>
                     </div>
+                </div>
+
+                <div className="map">
+                    <Map />
                 </div>
             </div>
         </>

@@ -2,6 +2,19 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ServiceContext } from "../context/ServiceContext";
 import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
+import redArrow from "../assets/red-arrow.png";
+import helpImg from "../assets/help.png";
+import arrowRight from "../assets/arrow-removebg-preview (1).png";
+import clientImg from "../assets/client.png";
+import first from "../assets/first.png";
+import second from "../assets/second.png";
+import firstClient from "../assets/first_client.png";
+import secondClient from "../assets/second_client.png";
+import thirdClient from "../assets/third_client.png";
+import fourthClient from "../assets/foruht_client.png";
+import siteLogo from "../assets/site-logo-removebg-preview.png";
+import plusIcon from "../assets/plus.png";
+import minusIcon from "../assets/minus.png";
 
 
 

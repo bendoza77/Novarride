@@ -35,14 +35,14 @@ const Nav = memo(() => {
                 </div>
 
                 <div className="side_nav">
-                    <Link onClick={() => setSide(false)} to={"/"}><p style={{color: "red"}}>Home</p></Link>
-                    <Link onClick={() => setSide(false)} to={"/about"}><p>About Us</p></Link>
-                    <Link onClick={() => setSide(false)} to={"/cars"}><p>Cars</p></Link>
-                    <Link onClick={() => setSide(false)} to={"/contact"}><p>Contact Us</p></Link>
-                    <Link onClick={() => setSide(false)} to={"/contact"}><p>Book A Rental</p></Link>
-                    <Link style={{display: Object.keys(curUser).length === 0 ? "block" : "none"}} onClick={() => setSide(false)} to={"/authorization"}><p>Login</p></Link>
-                    <Link style={{display: Object.keys(curUser).length === 0  ? "block" : "none"}} onClick={() => setSide(false)} to={"/register"}><p>Register</p></Link>
-                    <Link style={{display: Object.keys(curUser).length > 0  ? "block" : "none"}} onClick={handleLogOut}><p>Log Out</p></Link>
+                    <Link style={{textDecoration: "none"}} onClick={() => setSide(false)} to={"/"}><p style={{color: "red"}}>Home</p></Link>
+                    <Link style={{textDecoration: "none"}} onClick={() => setSide(false)} to={"/about"}><p>About Us</p></Link>
+                    <Link style={{textDecoration: "none"}} onClick={() => setSide(false)} to={"/cars"}><p>Cars</p></Link>
+                    <Link style={{textDecoration: "none"}} onClick={() => setSide(false)} to={"/contact"}><p>Contact Us</p></Link>
+                    <Link style={{textDecoration: "none"}} onClick={() => setSide(false)} to={"/contact"}><p>Book A Rental</p></Link>
+                    <Link style={{textDecoration: "none", display: Object.keys(curUser).length === 0 ? "block" : "none"}} onClick={() => setSide(false)} to={"/authorization"}><p>Login</p></Link>
+                    <Link style={{textDecoration: "none", display: Object.keys(curUser).length === 0  ? "block" : "none"}} onClick={() => setSide(false)} to={"/register"}><p>Register</p></Link>
+                    <Link style={{textDecoration: "none", display: Object.keys(curUser).length > 0  ? "block" : "none"}} onClick={handleLogOut}><p>Log Out</p></Link>
                 </div>
             </div>
             <header>
