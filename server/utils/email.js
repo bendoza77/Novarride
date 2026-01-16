@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer");
-const catchAsync = require("./catchAsync");
 require("dotenv").config();
 
 const transport = nodemailer.createTransport({
@@ -11,7 +10,7 @@ const transport = nodemailer.createTransport({
     }
 })
 
-const sendEmail = catchAsync(async (to, subject, html) => {
+const sendEmail = async (to, subject, html) => {
     try {
 
         const info = transport.sendMail({
@@ -26,6 +25,6 @@ const sendEmail = catchAsync(async (to, subject, html) => {
     } catch (error) {
         console.log(error);
     }
-})
+}
 
 module.exports = sendEmail

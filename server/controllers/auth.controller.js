@@ -52,7 +52,7 @@ const sisgnUp = catchAsync(async (req, res, next) => {
 
     const code =  newUser.createVerificationCode();
     await newUser.save({validateBeforeSave: false});
-    const url = `${req.protocol}://${req.get("host")}/api/auth/verify/${code}`;
+    const url = `${req.protocol}://${req.get("host")}/api/users/verify/${code}`;
     const designe = ` <!DOCTYPE html>
                         <html lang="en">
                         <head>
@@ -146,8 +146,7 @@ const verifyEmail = catchAsync(async (req, res, next) => {
     user.verificationCode = undefined
     user.save({validateBeforeSave: false});
 
-    res.redirect(`${"http://localhost:3000"}`)
-
+    res.status(200).send("Email is verified successfully");
 
 })
 
