@@ -58,7 +58,7 @@ const Car = () => {
   return (
     <>
       <div className={book === "user" ? "layer" : ""}></div>
-      <div style={{ display: book === "user" ? "block" : "none" }} className="book_car">
+      <div style={{ display: book === "user" ? "block" : "none" }} className="book_car animate-scale-in">
         <div className="bo">
           <div className="book_title">
             <h1>Reserve your vehicle today!</h1>
@@ -85,9 +85,9 @@ const Car = () => {
         </form>
       </div>
 
-      <div className="car">
-        <div style={{backgroundImage: `url(${bg})`}} className="about_top">
-          <h1>{carInfo.title}</h1>
+      <div className="car space-y-32">
+        <div style={{backgroundImage: `url(${bg})`}} className="about_top animate-fade-down">
+          <h1 className="animate-fade-up">{carInfo.title}</h1>
           <div className="about_nav">
             <Link to={"/"}><p className="about_home">Home</p></Link>
             <p>/</p>
@@ -97,8 +97,8 @@ const Car = () => {
           </div>
         </div>
 
-        <div className="car_info">
-          <div className="car_left">
+        <div className="car_info animate-fade-up">
+          <div className="car_left animate-slide-right">
             <div className="car_price">
               <p><span>${carInfo.pricePerDay}</span>/PerDay</p>
             </div>
@@ -158,13 +158,13 @@ const Car = () => {
             </p>
           </div>
 
-          <div className="car_right">
-            <div className="car_image">
+          <div className="car_right animate-slide-left">
+            <div className="car_image animate-zoom-rotate">
               <img src={carInfo.image} alt="" />
             </div>
             <img className="screen1" src={screenIcon} alt="" />
 
-            <div className="general">
+            <div className="general animate-fade-up">
               <div className="general_title">
                 <img src={siteLogo} alt="" />
                 <p>General Information</p>
@@ -174,7 +174,7 @@ const Car = () => {
               <img className="general_image" src={generalImg} alt="" />
             </div>
 
-            <div style={{ marginTop: "100px" }} className="general">
+            <div style={{ marginTop: "100px" }} className="general animate-fade-up">
               <div className="general_title">
                 <img src={siteLogo} alt="" />
                 <p>Amenities</p>
@@ -183,7 +183,7 @@ const Car = () => {
               <img className="ametides_image" src={amenitiesImg} alt="" />
             </div>
 
-            <div className="rental_condition">
+            <div className="rental_condition animate-fade-up">
               <div className="general_title">
                 <img src={siteLogo} alt="" />
                 <p>Rental Conditions</p>

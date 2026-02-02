@@ -5,6 +5,73 @@
     <link rel="icon" type="image/svg+xml" href="/site-logo-removebg-preview.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: "#ff2d2d",
+              dark: "#0f0f0f"
+            },
+            keyframes: {
+              "fade-up": {
+                "0%": { opacity: 0, transform: "translateY(40px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" }
+              },
+              "fade-down": {
+                "0%": { opacity: 0, transform: "translateY(-30px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" }
+              },
+              "scale-in": {
+                "0%": { opacity: 0, transform: "scale(0.95)" },
+                "100%": { opacity: 1, transform: "scale(1)" }
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" }
+              },
+              "pulse-glow": {
+                "0%, 100%": { filter: "drop-shadow(0 0 0 rgba(255,45,45,0))" },
+                "50%": { filter: "drop-shadow(0 0 20px rgba(255,45,45,0.45))" }
+              },
+              "slide-right": {
+                "0%": { opacity: 0, transform: "translateX(-40px)" },
+                "100%": { opacity: 1, transform: "translateX(0)" }
+              },
+              "slide-left": {
+                "0%": { opacity: 0, transform: "translateX(40px)" },
+                "100%": { opacity: 1, transform: "translateX(0)" }
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "-200% 0" },
+                "100%": { backgroundPosition: "200% 0" }
+              },
+              "zoom-rotate": {
+                "0%": { opacity: 0, transform: "scale(0.85) rotate(-6deg)" },
+                "100%": { opacity: 1, transform: "scale(1) rotate(0)" }
+              },
+              "blur-in": {
+                "0%": { opacity: 0, filter: "blur(8px)" },
+                "100%": { opacity: 1, filter: "blur(0)" }
+              }
+            },
+            animation: {
+              "fade-up": "fade-up 0.9s ease forwards",
+              "fade-down": "fade-down 0.9s ease forwards",
+              "scale-in": "scale-in 0.85s ease forwards",
+              float: "float 4s ease-in-out infinite",
+              "pulse-glow": "pulse-glow 2.6s ease-in-out infinite",
+              "slide-right": "slide-right 0.8s ease forwards",
+              "slide-left": "slide-left 0.8s ease forwards",
+              shimmer: "shimmer 2.5s linear infinite",
+              "zoom-rotate": "zoom-rotate 1s ease forwards",
+              "blur-in": "blur-in 0.75s ease forwards"
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

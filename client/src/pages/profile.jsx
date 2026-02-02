@@ -52,9 +52,9 @@ const Profile = () => {
 
     return (
         <>
-            <div className="profile_div">
-                <div style={{backgroundImage: `url(${bg})`}} className="about_top">
-                    <h1>Profile</h1>
+            <div className="profile_div space-y-32">
+                <div style={{backgroundImage: `url(${bg})`}} className="about_top animate-fade-down">
+                    <h1 className="animate-fade-up">Profile</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>
                         <p>/</p>
@@ -64,8 +64,8 @@ const Profile = () => {
                     </div>
                 </div>
                 
-                <div className="profile_bottom">
-                    <div className="profile_left">
+                <div className="profile_bottom animate-fade-up">
+                    <div className="profile_left animate-slide-right">
                         <img src={profileImg} alt="" />
                         <div className="user_info">
                             <p>Full Name: <span>{curUser.fullName}</span></p>
@@ -74,7 +74,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="profile_right">
+                    <div className="profile_right animate-slide-left">
                         <div className="car_like">
                             <div className="profile_title">
                                 <img src={siteLogo} alt="" />
@@ -83,7 +83,7 @@ const Profile = () => {
                             <h1 style={{fontSize: "50px"}}>The Cars You May Like It</h1>
                             <div style={{marginTop: "50px"}} className="col_right1">
                                 <div style={{display: "grid"}} className="page_one">
-                                    { car.slice(startIndex, startIndex + 6).map(el => <Car car={el}/> ) }
+                                    { car.slice(startIndex, startIndex + 6).map((el, idx) => <Car key={el._id} delay={idx * 120} car={el}/> ) }
                                 </div>
                                 <div className="col_button">
                                     <button style={{display: page === 1 ? "none": "block", padding: "2px", backgroundColor: "rgb(255, 45, 45)"}} onClick={() => setPage(page - 1)}><img src={leftArrow} alt="" /></button>
@@ -97,7 +97,7 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        <div className="rental_condition">
+                        <div className="rental_condition animate-fade-up">
                             <div className="general_title">
                                 <img src={siteLogo} alt="" />
                                 <p>Rental Conditions</p>
@@ -163,7 +163,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="choose">
+                <div className="choose animate-fade-up">
                     <div className="choose_title">
                         <img src={siteLogo} alt="" />
                         <p>Why Choose Us</p>

@@ -35,7 +35,7 @@ const createSendToken = (user, statusCode, res) => {
 
 const sisgnUp = catchAsync(async (req, res, next) => {
 
-    const { fullName, email, password, phone, role, reviewId } = req.body;
+    const { fullName, email, password, phone} = req.body;
 
     if (!fullName || !email || !password || !phone) {
         return next(new AppError("All field is required", 401));
@@ -46,8 +46,6 @@ const sisgnUp = catchAsync(async (req, res, next) => {
         email,
         password,
         phone,
-        role,
-        reviewId
     })
 
     const code =  newUser.createVerificationCode();

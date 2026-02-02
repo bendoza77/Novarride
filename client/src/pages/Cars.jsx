@@ -74,6 +74,7 @@ const Cars = () => {
             return name && type;
         })
 
+
         setFilter(filtered);
     };
 
@@ -92,9 +93,9 @@ const Cars = () => {
 
     return (
         <>
-            <div className="cars_div">
-                <div style={{backgroundImage: `url(${bg})`}} className="about_top">
-                    <h1>Cars</h1>
+            <div className="cars_div space-y-32">
+                <div style={{backgroundImage: `url(${bg})`}} className="about_top animate-fade-down">
+                    <h1 className="animate-fade-up">Cars</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>
                         <p>/</p>
@@ -102,8 +103,8 @@ const Cars = () => {
                     </div>
                 </div>
 
-                <div className="collection">
-                    <div className="col_left">
+                <div className="collection animate-fade-up">
+                    <div className="col_left animate-slide-right">
                         <form onSubmit={handleFilter}>
                             <input type="text" name="carName" id="search" placeholder="Search..."/>
 
@@ -171,9 +172,11 @@ const Cars = () => {
                         <p style={{color: "red", marginTop: "20px", lineHeight: "25px"}}>{result.message}</p>
                     </div>
 
-                    <div className="col_right">
+                    <div className="col_right animate-slide-left">
                         <div style={{display: "grid"}} className="page_one">
-                            {filter.length !== 0 ? filter.slice(startIndex, startIndex + 6).map(el => <Car key={el._id} car={el} />) : car.slice(startIndex, startIndex + 6).map(el => <Car key={el._id} car={el}/>)}
+                            {(filter.length !== 0 ? filter.slice(startIndex, startIndex + 6) : car.slice(startIndex, startIndex + 6)).map((el, idx) => (
+                                <Car key={el._id} delay={idx * 120} car={el} />
+                            ))}
                         </div>
 
                         <div style={{display: [1, 2, 3, 4, 5, 6].includes(filter.length) ? "none": "flex"}} className="col_button">

@@ -56,9 +56,9 @@ const About = () => {
 
     return (
         <>
-            <div className="about">
-                <div style={{backgroundImage: `url(${bg})`, backgroundSize: "cover"}} className="about_top">
-                    <h1>About Us</h1>
+            <div className="about space-y-32">
+                <div style={{backgroundImage: `url(${bg})`, backgroundSize: "cover"}} className="about_top animate-fade-down">
+                    <h1 className="animate-fade-up">About Us</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>
                         <p>/</p>
@@ -67,11 +67,11 @@ const About = () => {
                 </div>
 
                 <div style={{ marginTop: "100px" }} className="about-us">
-                    <div className="left_us">
-                        <img src={aboutLeftImg} alt="" />
+                    <div className="left_us animate-slide-right">
+                        <img className="animate-zoom-rotate" src={aboutLeftImg} alt="" />
                     </div>
 
-                    <div className="right_us">
+                    <div className="right_us animate-slide-left">
                         <div className="title">
                             <img src={siteLogo} alt="" />
                             <p>About Us</p>
@@ -98,7 +98,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="brands">
+                <div className="brands animate-fade-up">
                     <div className="brands_title">
                         <img src={siteLogoWhite} alt="" />
                         <p>Executive Partners</p>
@@ -109,7 +109,7 @@ const About = () => {
                     <img className="brand_image" src={brandsImg} alt="" />
                 </div>
 
-                <div className="mission">
+                <div className="mission animate-fade-up">
                     <div className="mission_title">
                         <img src={siteLogoWhite} alt="" />
                         <p>Vision Mission</p>
@@ -132,7 +132,7 @@ const About = () => {
                     </div>
 
                     <div className="mission_bottom">
-                        <div className="mission_left">
+                        <div className="mission_left animate-slide-right">
                             <div className="mis_left">
                                 <img src={siteLogoWhite} alt="" />
                                 <p>Our {title}</p>
@@ -158,13 +158,13 @@ const About = () => {
                             </div>
                         </div>
 
-                        <div className="mission_right">
-                            <img src={carImage} alt="" />
+                        <div className="mission_right animate-slide-left">
+                            <img className="animate-zoom-rotate" src={carImage} alt="" />
                         </div>
                     </div>
                 </div>
 
-                <div className="choose">
+                <div className="choose animate-fade-up">
                     <div className="choose_title">
                         <img src={siteLogoWhite} alt="" />
                         <p>Why Choose Us</p>

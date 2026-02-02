@@ -3,6 +3,7 @@ import { UserContext } from "../context/UserContext";
 import { SetLocalStorage } from "../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Authorization = () => {
 
@@ -13,10 +14,10 @@ const Authorization = () => {
     const API_URL = import.meta.env.VITE_CLIENT_URL + "/api";
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
 
-        const { userEmail, userPassword } = e.target
+        const { userEmail, userPassword } = e.target;
+        const toastId = toast.loading("User login...");
 
         const data = {
             email: userEmail.value,
@@ -24,7 +25,7 @@ const Authorization = () => {
         }
 
         try {
-            const request = await fetch(`${API_URL}/users/login`, {
+            const request = await fetch(`${API_URL}/auth/login`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(data),
@@ -33,7 +34,10 @@ const Authorization = () => {
 
             const res = await request.json();
             setRes(res);
-            console.log(res);
+
+            if (!request.ok) {
+                throw new Error("Email or Password is incorrect")
+            }
 
             if (res.status === "succasse") {
                 setCurUser(prev => {
@@ -42,17 +46,28 @@ const Authorization = () => {
                 })
                 
                 navigate("/");
+                toast.update(toastId, {
+                    render: "You log in succassefuly",
+                    type: "success",
+                    isLoading: false,
+                    autoClose: 2000
+                })
             }
 
         } catch (error) {
-            console.log(error);
+            toast.update(toastId, {
+                render: `Error: ${error}`,
+                type: "error",
+                isLoading: false,
+                autoClose: 2000
+            })
         }
 
     } 
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="auth_form">
+            <form onSubmit={handleSubmit} className="auth_form animate-fade-up">
                 <div>
                     <label htmlFor="userEmail">Enter Your Email</label> <br />
                     <input type="email" name="userEmail" id="userEmail" required placeholder="Enter Your Email"/>
@@ -63,7 +78,6 @@ const Authorization = () => {
                     <input type="password" name="userPassword" id="userPassword" required placeholder="Enter Your Password"/>
                 </div>
                 <button>Login</button>
-                <p style={{marginTop: "20px", color: "red"}}>{res.message}</p>
             </form>
         </>
     );

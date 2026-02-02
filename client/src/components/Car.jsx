@@ -7,7 +7,7 @@ import doorImg from "../assets/door.png";
 import passengerImg from "../assets/passenger.png";
 import arrowImg from "../assets/arrow-removebg-preview (1).png";
 
-const Car = memo(({ car }) => {
+const Car = memo(({ car, delay = 0 }) => {
 
     const { setCarInfo, carInfo } = useContext(CarContext);
     const { curUser } = useContext(UserContext);
@@ -41,8 +41,8 @@ const Car = memo(({ car }) => {
 
     return (
         <>
-            <div key={car._id} className="car_div">
-                <div className="car_image">
+            <div key={car._id} style={{ animationDelay: `${delay}ms` }} className="car_div animate-card">
+                <div className="car_image animate-zoom-rotate">
                     <img src={car.image} alt="" />
                     <div
                         onClick={handleDelete}
@@ -57,9 +57,9 @@ const Car = memo(({ car }) => {
                     <div className="car_type">
                         <p>{car.type}</p>
                     </div>
-                    <h1 className="car_title">{car.title}</h1>
+                    <h1 style={{ animationDelay: `${delay + 100}ms` }} className="car_title animate-fade-up">{car.title}</h1>
 
-                    <div className="door">
+                    <div style={{ animationDelay: `${delay + 150}ms` }} className="door animate-fade-up">
                         <div>
                             <img src={doorImg} alt="" />
                             <p>Doors</p>
@@ -67,7 +67,7 @@ const Car = memo(({ car }) => {
                         <p>{car.doors}</p>
                     </div>
 
-                    <div className="passenger">
+                    <div style={{ animationDelay: `${delay + 200}ms` }} className="passenger animate-fade-up">
                         <div>
                             <img src={passengerImg} alt="" />
                             <p>Passengers</p>
@@ -76,9 +76,9 @@ const Car = memo(({ car }) => {
                     </div>
 
                     <Link onClick={handleCar} className="car_link" to={"/car"}>
-                        <div className="price">
+                        <div style={{ animationDelay: `${delay + 300}ms` }} className="price animate-fade-up">
                             <p><span>${car.pricePerDay}</span>/Per Day</p>
-                            <button className="car_button">
+                            <button className="car_button animate-pulse-glow">
                                 <img src={arrowImg} alt="" />
                             </button>
                         </div>

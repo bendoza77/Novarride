@@ -7,6 +7,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./routers/auth.router");
 const path = require("path");
+const userRouter = require("./routers/user.router");
 require("dotenv").config();
 
 const app = express();
@@ -28,7 +29,8 @@ app.use(cors({
 // create router
 
 app.use("/api/cars", carRouter);
-app.use("/api/users", authRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter);
 
 app.use(globalErrorHandler);
 

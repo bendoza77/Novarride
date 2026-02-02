@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loading from "./components/FallBack/Loading";
+import { ToastContainer } from "react-toastify";
 
 // LAZY IMPORTS (everything loads ONLY when needed)
 const Home = lazy(() => import("./pages/Home"));
@@ -32,6 +33,7 @@ const App = () => {
                     <Route path="/authorization" element={<Authorization />} />
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
+            <ToastContainer position="bottom-right" />
             <Footer />
         </Suspense>
         </>

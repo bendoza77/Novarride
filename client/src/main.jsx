@@ -5,6 +5,7 @@ import "./App.css"
 import { CarProvider } from './context/CarContext.jsx'
 import { ServiceProvider } from './context/ServiceContext.jsx'
 import { UserProvider } from './context/UserContext.jsx'
+import "./index.css"
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>

@@ -22,15 +22,15 @@ const Footer = memo(() => {
 
     return (
         <>
-            <div className="footer">
+            <div className="footer animate-fade-up">
                 <div className="footer_top">
-                    <div className="left1">
-                        <img src={logo} alt="" />
+                    <div className="left1 animate-slide-right">
+                        <img className="animate-zoom-rotate" src={logo} alt="" />
                         <p>Experience the ease and <br /> convenience of renting a car with <br /> Novaride.</p>
                     </div>
 
                     <div className="dv">         
-                        <div className="left2">
+                        <div className="left2 animate-fade-up">
                             <h1>legal policy</h1>
                             <ScrollLink  smooth={true} duration={200} to={`${location.pathname}` === "/" ? "home" : `${location.pathname}`.slice(1)} ><p style={{marginTop: "25px"}}>Term & Condition</p></ScrollLink >
                             <ScrollLink  smooth={true} duration={200} to={`${location.pathname}` === "/" ? "home" : `${location.pathname}`.slice(1)} ><p>Privacy Policy</p></ScrollLink >
@@ -39,7 +39,7 @@ const Footer = memo(() => {
                         </div>
 
 
-                        <div className="right1">
+                        <div className="right1 animate-fade-up">
                             <h1>quick links</h1>
                             <Link to={"/"}><p style={{marginTop: "25px"}}>Home</p></Link>
                             <Link to={"/about"}><p>About Us</p></Link>
@@ -47,7 +47,7 @@ const Footer = memo(() => {
                             <Link to={"/services"}><p>Service</p></Link>
                         </div>
 
-                        <div className="right2">
+                        <div className="right2 animate-fade-up">
                             <h1>Subscribe to the Newsleeters</h1>
                             <div className="right22">
                                 <form onSubmit={handleSubmit} style={{display: "flex", aligneItems: "center"}}>
@@ -60,12 +60,12 @@ const Footer = memo(() => {
 
                 </div>
 
-                <div className="footer_bottom">
+                <div className="footer_bottom animate-fade-up">
                     <div className="bottom_left">
                         <p>© 2024 Novaride. All rights reserved.</p>
                     </div>
 
-                    <div className="bottom_right">
+                    <div className="bottom_right animate-scale-in">
                         <Media image="./src/assets/youtube.png" />
                         <Media image="./src/assets/facebook-app-symbol.png" />
                         <Media image="./src/assets/twitter (1).png" />

@@ -3,6 +3,7 @@ import { SetLocalStorage } from "../utils/LocalStorage";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Register = () => {
 
@@ -17,6 +18,7 @@ const Register = () => {
         e.preventDefault();
 
         const { userName, userEmail, userLastName, userPhone, userPassword } = e.target
+        const toastId = toast.loading("User register...");
 
         const data = {
             fullName: `${userName.value} ${userLastName.value}`,
@@ -26,7 +28,7 @@ const Register = () => {
         }
 
         try {
-            const request = await fetch(`${API_URL}/users/signup`, {
+            const request = await fetch(`${API_URL}/auth/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -37,7 +39,10 @@ const Register = () => {
 
             const res = await request.json();
             setRes(res);
-            console.log(res);
+            
+            if (!request.ok) {
+                throw new Error(res.message);
+            }
 
             if (res.status === "succasse") {
                 setUsers(prev => {
@@ -51,17 +56,28 @@ const Register = () => {
                 })
 
                 navigate("/");
+                toast.update(toastId, {
+                    render: "You register succassefuly",
+                    type: "success",
+                    isLoading: false,
+                    autoClose: 2000
+                })
             }
 
         } catch (error) {
-            console.error(error);
+            toast.update(toastId, {
+                render: `Error ${error}`,
+                type: "error",
+                isLoading: false,
+                autoClose: 2000
+            })
         }
 
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="register_form">
+            <form onSubmit={handleSubmit} className="register_form animate-fade-up">
                 <div className="reg_first">
                     <div className="reg_name">
                         <label htmlFor="userName">Enter Your Name</label> <br />
@@ -91,7 +107,6 @@ const Register = () => {
                     </div>
                 </div>
                 <button>Create Accounte</button>
-                <p style={{marginTop: "20px", color: "red"}}>{res.message}</p>
             </form>
         </>
     );

@@ -20,9 +20,9 @@ const Contact = () => {
 
     return (
         <>
-            <div className="contact_div">
-                <div style={{backgroundImage: `url(${bg})`}} className="about_top">
-                    <h1>Contact Us</h1>
+            <div className="contact_div space-y-32">
+                <div style={{backgroundImage: `url(${bg})`}} className="about_top animate-fade-down">
+                    <h1 className="animate-fade-up">Contact Us</h1>
                     <div className="about_nav">
                         <Link to={"/"}><p className="about_home">Home</p></Link>
                         <p>/</p>
@@ -30,8 +30,8 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <div className="contact_bottom">
-                    <div className="contact_left">
+                <div className="contact_bottom animate-fade-up">
+                    <div className="contact_left animate-slide-right">
                         <h1>Contact information</h1>
                         <p>Say something to start a live chat!</p>
 
@@ -42,7 +42,7 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <div className="contact_right">
+                    <div className="contact_right animate-slide-left">
                         <form onSubmit={handleSubmit}>
                             <div className="co1">
                                 <div className="first_name">
@@ -80,7 +80,7 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <div className="map">
+                <div className="map animate-scale-in">
                     <Map />
                 </div>
             </div>

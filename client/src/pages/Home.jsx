@@ -86,13 +86,13 @@ const Home = () => {
 
   return (
     <>
-      <div className="home">
-        <div style={{ backgroundImage: `url(${bgImage})`}} className="top">
-          <h1>Looking to save more on <br /> your rental car?</h1>
-          <p>Whether you’re planning a weekend getaway, a business trip, or just need a reliable ride <br />
+      <div className="home space-y-32 px-4 sm:px-8 lg:px-14 xl:px-24 max-w-[1400px] mx-auto">
+        <div style={{ backgroundImage: `url(${bgImage})`}} className="top animate-fade-down min-h-[650px] sm:min-h-[780px] w-full">
+          <h1 className="animate-fade-up">Looking to save more on <br /> your rental car?</h1>
+          <p style={{ animationDelay: "150ms" }} className="animate-fade-up">Whether you’re planning a weekend getaway, a business trip, or just need a reliable ride <br />
             for the day, we offers a wide range of vehicles to suit your needs.</p>
 
-          <div className="buttons">
+          <div style={{ animationDelay: "200ms" }} className="buttons animate-fade-up flex flex-col sm:flex-row items-center gap-4">
             <Link className="book1" to={"/contact"}><button className="book1">Book A Rental</button></Link>
             <div className="learn">
               <Link className="more1" to={"about"}><button className="more1">Learn More</button></Link>
@@ -100,33 +100,33 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="search">
+          <div style={{ animationDelay: "300ms" }} className="search animate-fade-up w-full ">
             <div className="rent">
               <p>Need to Rent a <br /> Luxury Car ?</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="form">
-              <div className="name_field">
+            <form onSubmit={handleSubmit} className="form flex flex-col lg:flex-row flex-wrap gap-6 w-full">
+              <div className="name_field flex-1 min-w-[180px]">
                 <p>Full Name</p>
                 <input type="text" name="userFullName" placeholder="Enter Full Name" required />
               </div>
 
-              <div className="phone_number">
+              <div className="phone_number flex-1 min-w-[180px]">
                 <p>Mobile No</p>
                 <input type="text" name="userPhoneNumber" placeholder="Enter Phone no." required />
               </div>
 
-              <div className="location">
+              <div className="location flex-1 min-w-[180px]">
                 <p>Pickup Location</p>
                 <input type="text" name="userLocation" placeholder="Enter Location" required />
               </div>
 
-              <div className="date">
+              <div className="date flex-1 min-w-[180px]">
                 <p>Pickup Date</p>
                 <input type="date" name="userDate" required />
               </div>
 
-              <div className="send">
+              <div className="send flex-1 min-w-[160px] flex justify-center">
                 <button>Send</button>
               </div>
             </form>
@@ -134,7 +134,7 @@ const Home = () => {
           <p style={{ display: book ? "block" : "none", color: "red", fontSize: "20px" }}>Create account or login to send information</p>
         </div>
 
-        <div className="search_div">
+        <div className="search_div animate-fade-up w-full max-w-4xl px-4">
           <h1>Need to Rent a Luxury Car ?</h1>
           <form onSubmit={handleSubmit}>
             <div className="search_one">
@@ -161,11 +161,11 @@ const Home = () => {
           </form>
         </div>
 
-        <div className="about-us">
-          <div className="left_us">
-            <img src={screenshot1} alt="" />
+        <div className="about-us flex flex-col xl:flex-row gap-10 items-center">
+          <div className="left_us animate-fade-up">
+            <img className="animate-float" src={screenshot1} alt="" />
           </div>
-          <div className="right_us">
+          <div style={{ animationDelay: "150ms" }} className="right_us animate-fade-up w-full xl:w-1/2">
             <div className="title">
               <img src={siteLogo} alt="" />
               <p>About Us</p>
@@ -197,17 +197,16 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="service">
+        <div className="service animate-fade-up w-full px-2 sm:px-4">
           <div className="service_title">
             <img src={serviceLogo} alt="" />
             <p>Our Services</p>
           </div>
           <h1>Explore our wide range of <br /> rental services</h1>
-          <div className="services">
-            <Service image={service1} title="Car Rental With Driver" text="Enhance your rental experience with additional options." />
-            <Service image={service2} title="Business Car Rental" text="Enhance your rental experience with additional options." />
-            <Service image={service3} title="Airport Transfer" text="Enhance your rental experience with additional options." />
-            <Service image={service4} title="Chauffeur Services" text="Enhance your rental experience with additional options." />
+          <div className="services grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full">
+            {[service1, service2, service3, service4].map((img, idx) => (
+              <Service key={idx} image={img} title={["Car Rental With Driver", "Business Car Rental", "Airport Transfer", "Chauffeur Services"][idx]} text="Enhance your rental experience with additional options." delay={idx * 100} />
+            ))}
           </div>
           <p className="service_info">Discover our range of car rental services designed to meet all your travel needs. <br /> From a diverse fleet of vehicles to flexible rental plans.</p>
           <div className="view">
@@ -216,7 +215,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="fleet">
+        <div className="fleet animate-fade-up">
           <div className="fleet_title">
             <img src={serviceLogo} alt="" />
             <p>Our Fleets</p>
@@ -224,21 +223,21 @@ const Home = () => {
           <h1 className="fleet_h1">Explore our perfect and <br /> extensive fleet</h1>
           <div className="scroller">
             <div className="cars">
-              {car.map(el => <Car car={el} />)}
+              {car.map((el, idx) => <Car key={`${el._id}-main`} delay={idx * 120} car={el} />)}
             </div>
             <div aria-hidden className="cars">
-              {car.map(el => <Car car={el} />)}
+              {car.map((el, idx) => <Car key={`${el._id}-ghost-${idx}`} delay={idx * 120} car={el} />)}
             </div>
           </div>
 
-          <div className="car_types">
-            <CarType car={car} image={suvImg} title="SUV Car" />
-            <CarType car={car} image={hatchbackImg} title="Hatchback Car" />
-            <CarType car={car} image={sedanImg} title="Sedan Car" />
+          <div className="car_types flex flex-col lg:flex-row gap-6 w-full">
+            {[{image: suvImg, title: "SUV Car"}, {image: hatchbackImg, title:"Hatchback Car"}, {image: sedanImg, title:"Sedan Car"}].map((item, idx) => (
+              <CarType key={item.title} delay={idx * 150} car={car} image={item.image} title={item.title} />
+            ))}
           </div>
         </div>
 
-        <div className="work">
+        <div className="work animate-fade-up flex flex-col lg:flex-row gap-12 items-center">
           <div className="work_left">
             <div className="work_title">
               <img src={serviceLogo} alt="" />
@@ -252,8 +251,8 @@ const Home = () => {
                 <div className="one" key={index}>
                   <div onClick={[handleQuestionOne, handleQuestionTwo, handleQuestionThree][index]} className="lf">
                     <div className="tx">
-                      <p style={{ fontSize: "22px" }}>{index + 1}.</p>
-                      <p style={{ fontSize: "22px" }}>{["Browse And Select", "Book And Confirm", "Book And Enjoy"][index]}</p>
+                      <p className="font-bold" style={{ fontSize: "22px" }}>{index + 1}.</p>
+                      <p className="transition-all duration-500" style={{ fontSize: "22px" }}>{["Browse And Select", "Book And Confirm", "Book And Enjoy"][index]}</p>
                     </div>
                     <img style={{ rotate: active ? "180deg" : "0deg" }} src={downArrow} alt="" />
                   </div>
@@ -266,12 +265,12 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="work_right">
-            <img src={peopleImg} alt="" />
+          <div className="work_right animate-float">
+            <img className="animate-zoom-rotate" src={peopleImg} alt="" />
           </div>
         </div>
 
-        <div className="choose">
+        <div className="choose animate-fade-up">
           <div className="choose_title">
             <img src={serviceLogo} alt="" />
             <p>Why Choose Us</p>
@@ -318,11 +317,11 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="our_service">
-          <div className="our_left">
-            <img src={faqImg} alt="" />
+        <div className="our_service animate-fade-up">
+          <div className="our_left animate-slide-right">
+            <img className="animate-zoom-rotate" src={faqImg} alt="" />
           </div>
-          <div className="our_right">
+          <div className="our_right animate-slide-left">
             <div className="our_title">
               <img src={serviceLogo} alt="" />
               <p>Frequently Asked Questions</p>
@@ -351,7 +350,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="today">
+        <div className="today animate-fade-up">
           <div className="today_left">
             <h1>Ready to hit the road? <br /> Book your car today !</h1>
             <p>Our friendly customer service team is here to help. Contact us <br /> anytime for support and inquiries.</p>
@@ -362,8 +361,8 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="today_right">
-            <img src={todayImg} alt="" />
+          <div className="today_right animate-float">
+            <img className="animate-zoom-rotate" src={todayImg} alt="" />
           </div>
         </div>
       </div>

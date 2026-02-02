@@ -4,9 +4,9 @@ const Loading = () => {
 
     return (
         <>
-            <div className="loading">
+            <div className="loading animate-scale-in">
                 <div className="spiner"></div>
-                <img src={whiteLogo} alt="" />
+                <img className="animate-pulse-glow" src={whiteLogo} alt="" />
             </div>
         </>
     );

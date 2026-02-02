@@ -54,9 +54,9 @@ const ServicePage = () => {
     };
 
     return (
-        <div className="servicePage">
-            <div style={{backgroundImage: `url(${bg})`}} className="about_top">
-                <h1>{serviceInfo}</h1>
+        <div className="servicePage space-y-32">
+            <div style={{backgroundImage: `url(${bg})`}} className="about_top animate-fade-down">
+                <h1 className="animate-fade-up">{serviceInfo}</h1>
                 <div className="about_nav">
                     <Link to={"/"}><p className="about_home">Home</p></Link>
                     <p>/</p>
@@ -66,8 +66,8 @@ const ServicePage = () => {
                 </div>
             </div>
 
-            <div className="serv_info">
-                <div className="serv_left">
+            <div className="serv_info animate-fade-up">
+                <div className="serv_left animate-slide-right">
                     <div className="left_up">
                         <h1>Our Services</h1>
                         <div>
@@ -88,7 +88,7 @@ const ServicePage = () => {
                         </div>
                     </div>
 
-                    <div className="left_bottom">
+                    <div className="left_bottom animate-scale-in">
                         <img src={helpImg} alt="" />
                         <h1>Need help ?</h1>
                         <p>We strive to provide exceptional customer service and support. Whether you have questions.</p>
@@ -100,12 +100,12 @@ const ServicePage = () => {
                     </div>
                 </div>
 
-                <div className="serv_right">
-                    <div className="right_top">
+                <div className="serv_right animate-slide-left">
+                    <div className="right_top animate-zoom-rotate">
                         <img src={clientImg} alt="" />
                     </div>
 
-                    <div className="right_info">
+                    <div className="right_info animate-fade-up">
                         <h1>Discover premium rental services</h1>
                         <p>We offer a wide range of car rental services designed to meet all your transportation needs. Whether you’re <br />
                             traveling for business, planning a family vacation, or need a reliable vehicle for a special event, we have the <br />
@@ -116,19 +116,19 @@ const ServicePage = () => {
                             why we are the preferred choice for car rentals.</p>
                     </div>
 
-                    <div className="sr">
+                    <div className="sr animate-fade-up">
                         <img src={first} alt="" />
                         <img src={second} alt="" />
                     </div>
 
-                    <div className="clients">
+                    <div className="clients animate-fade-up">
                         <img src={firstClient} alt="" />
                         <img src={secondClient} alt="" />
                         <img src={thirdClient} alt="" />
                         <img src={fourthClient} alt="" />
                     </div>
 
-                    <div className="rental_condition">
+                    <div className="rental_condition animate-fade-up">
                         <div className="general_title">
                             <img src={siteLogo} alt="" />
                             <p>Frequently Asked Questions</p>
