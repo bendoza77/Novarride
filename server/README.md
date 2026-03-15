@@ -20,6 +20,19 @@ An Express.js backend API for Novarride, a ride-sharing/booking platform. It exp
 ## Overview
 The backend provides RESTful endpoints consumed by the frontend. It supports user registration/login, protected routes via auth middleware, and CRUD endpoints around cars and related resources.
 
+## Who is this for (end users)?
+- Riders/customers who want to browse available cars and book rides.
+- Fleet owners or partners listing vehicles for hire (if enabled).
+- Admins/operators managing users, cars, and system configuration.
+
+## What do users want from this website?
+- Create an account and securely sign in.
+- Browse and search available cars with key details.
+- View car details and availability.
+- Start a booking/ride request flow.
+- Manage profile and preferences.
+- Contact support and receive notifications.
+
 ## Key Features
 - JWT-based authentication and authorization
 - User registration and login
@@ -169,3 +182,10 @@ Errors are returned as JSON with HTTP status codes and helpful messages.
 
 ## License
 This project is proprietary to Novarride unless otherwise stated in the root LICENSE file.
+
+
+## API DOCUMENTATION
+Postman Collection available in `/postman` folder.
+
+## Base URL: 
+http://localhost:3000/api

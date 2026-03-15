@@ -2,34 +2,38 @@ import { Link } from "react-router-dom";
 import { SetLocalStorage } from "../utils/LocalStorage";
 import { memo, useContext } from "react";
 import { ServiceContext } from "../context/ServiceContext";
-import arrow_right from "../assets/arrow-removebg-preview (1).png"
 
-const Service = memo(({image, title, text, delay = 0}) => {
-
+const Service = memo(({ image, title, text, delay = 0 }) => {
     const { setServiceInfo } = useContext(ServiceContext);
 
     const handleService = () => {
-
-        setServiceInfo(prev => {
-            SetLocalStorage("service", title);
-            return title;
-        });
-    }
+        setServiceInfo(() => { SetLocalStorage("service", title); return title; });
+    };
 
     return (
-        <>
-            <div style={{ animationDelay: `${delay}ms` }} className="service_div animate-card">
-                <img className="animate-float" src={image} alt="" />
-
-                <h1 style={{ animationDelay: `${delay + 100}ms` }} className="animate-fade-up">{title}</h1>
-                <p style={{ animationDelay: `${delay + 200}ms` }} className="animate-fade-up">{text}</p>
-
-                <Link onClick={handleService} to={"/service"}><button className="animate-zoom-rotate"><img src={arrow_right} alt="" /></button></Link>
+        <div
+            className="card-base p-6 flex flex-col gap-4 group cursor-pointer"
+            style={{ transitionDelay: `${delay}ms` }}
+            data-reveal="scale"
+        >
+            <div className="w-14 h-14 rounded-2xl bg-brand/8 border border-brand/15 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:bg-brand/15 group-hover:border-brand/25">
+                <img src={image} alt={title} className="w-8 h-8 object-contain" />
             </div>
-        </>
+
+            <div className="flex flex-col gap-2 flex-1">
+                <h3 className="font-semibold text-gray-900 text-[15px] leading-snug group-hover:text-brand transition-colors">{title}</h3>
+                <p className="text-sm text-gray-500 leading-6">{text}</p>
+            </div>
+
+            <Link to="/service" onClick={handleService}
+                className="flex items-center gap-2 text-xs font-medium text-gray-400 hover:text-brand transition-colors mt-auto">
+                Learn more
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </Link>
+        </div>
     );
+});
 
-
-})
-
-export default Service
+export default Service;

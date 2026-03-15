@@ -1,222 +1,177 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import visionImg from "../assets/pexels-albinberlin-905554.jpg";
-import approachImg from "../assets/pexels-mikebirdy-3729464.jpg";
-import missionImg from "../assets/pexels-toms-svilans-375611-1005617.jpg";
-
+import visionImg    from "../assets/pexels-albinberlin-905554.jpg";
+import approachImg  from "../assets/pexels-mikebirdy-3729464.jpg";
+import missionImg   from "../assets/pexels-toms-svilans-375611-1005617.jpg";
 import aboutLeftImg from "../assets/Screenshot 2025-11-08 120025.png";
-import siteLogo from "../assets/site-logo.png";
-import bookingImg from "../assets/booking.png";
-import pickupImg from "../assets/pick-up.png";
+import bookingImg   from "../assets/booking.png";
+import pickupImg    from "../assets/pick-up.png";
+import brandsImg    from "../assets/brands.png";
+import bg           from "../assets/pexels-thephotosaccount-30664842.jpg";
 
-import siteLogoWhite from "../assets/site-logo-removebg-preview.png";
-import brandsImg from "../assets/brands.png";
-import likeImg from "../assets/like.png";
+const TABS = [
+    { id: 'vision',   label: 'Our Vision',   image: visionImg,
+      desc: "We aim to redefine the car rental experience globally — making premium vehicles accessible, affordable, and effortless." },
+    { id: 'mission',  label: 'Our Mission',  image: missionImg,
+      desc: "To deliver the highest standard of vehicle rental services through innovation, technology, and a commitment to customer satisfaction." },
+    { id: 'approach', label: 'Our Approach', image: approachImg,
+      desc: "We combine cutting-edge technology with a personal touch — creating a seamless booking experience backed by world-class support." },
+];
 
-import fleet1 from "../assets/Screenshot 2025-11-24 191635.png";
-import fleet2 from "../assets/Screenshot 2025-11-24 191649.png";
-import fleetMiddle from "../assets/Screenshot 2025-11-24 191712.png";
-import fleet3 from "../assets/Screenshot 2025-11-24 191724.png";
-import fleet4 from "../assets/Screenshot 2025-11-24 191735.png";
-import bg from "../assets/pexels-thephotosaccount-30664842.jpg";
-
+const FeatureItem = ({ text }) => (
+    <div className="flex items-center gap-3">
+        <div className="w-5 h-5 rounded-full bg-brand/10 border border-brand/25 flex items-center justify-center flex-shrink-0">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#e63946" strokeWidth="3">
+                <path d="M20 6L9 17l-5-5" />
+            </svg>
+        </div>
+        <p className="text-gray-600 text-sm leading-6">{text}</p>
+    </div>
+);
 
 const About = () => {
+    const [activeTab, setActiveTab] = useState('vision');
+    const currentTab = TABS.find(t => t.id === activeTab);
 
-    const [carImage, setCarImage] = useState(visionImg);
-    const [vission, setVission] = useState(true);
-    const [approach, setApproach] = useState(false);
-    const [mission, setMission] = useState(false);
-    const [title, setTitle] = useState("Vision");
-
-    const handleVission = () => {
-        setCarImage(visionImg);
-        setVission(true);
-        setApproach(false);
-        setMission(false);
-        setTitle("Vision");
-    };
-
-    const handleApproach = () => {
-        setCarImage(approachImg);
-        setVission(false);
-        setApproach(true);
-        setMission(false);
-        setTitle("Approach");
-    };
-
-    const handleMission = () => {
-        setCarImage(missionImg);
-        setVission(false);
-        setApproach(false);
-        setMission(true);
-        setTitle("Mission");
-    };
+    const features = [
+        { icon: "🚗", title: "Extensive Fleet",      desc: "500+ vehicles from economy to luxury." },
+        { icon: "🎯", title: "Customer First",        desc: "Our entire operation is built around your comfort." },
+        { icon: "📍", title: "Convenient Locations",  desc: "50+ pick-up points nationwide." },
+        { icon: "🛡️", title: "Reliability & Safety", desc: "Every vehicle undergoes rigorous safety checks." },
+    ];
 
     return (
-        <>
-            <div className="about space-y-32">
-                <div style={{backgroundImage: `url(${bg})`, backgroundSize: "cover"}} className="about_top animate-fade-down">
-                    <h1 className="animate-fade-up">About Us</h1>
-                    <div className="about_nav">
-                        <Link to={"/"}><p className="about_home">Home</p></Link>
-                        <p>/</p>
-                        <p className="place">About Us</p>
-                    </div>
-                </div>
-
-                <div style={{ marginTop: "100px" }} className="about-us">
-                    <div className="left_us animate-slide-right">
-                        <img className="animate-zoom-rotate" src={aboutLeftImg} alt="" />
-                    </div>
-
-                    <div className="right_us animate-slide-left">
-                        <div className="title">
-                            <img src={siteLogo} alt="" />
-                            <p>About Us</p>
-                        </div>
-
-                        <h1>Your trusted partner in <br /> reliable car rental</h1>
-                        <p className="la">Aqestic Optio Amet A Ququam Saepe Aliquid Voluate Dicta Fuga Dolor Saerror Sed <br /> Earum A Magni Soluta Quam Minus Dolor Dolor</p>
-
-                        <div className="booking_info">
-                            <img src={bookingImg} alt="" />
-                            <div className="booking_title">
-                                <p className="process">Easy Booking Process</p>
-                                <p className="booking_text">We Have Optimized The Booking Process So That Our Clients Can <br /> Experience The Easiest And The Safest Service</p>
-                            </div>
-                        </div>
-
-                        <div className="pick_up">
-                            <img src={pickupImg} alt="" />
-                            <div className="pickup_title">
-                                <p style={{ fontSize: 20, fontWeight: 500 }}>Convenient Pick-Up & Return Process</p>
-                                <p style={{ color: "rgba(128, 128, 128, 0.752", marginTop: 20, lineHeight: "25px" }}>We Have Optimized The Booking Process So That Our Clients Can <br /> Experience The Easiest And The Safest Service</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="brands animate-fade-up">
-                    <div className="brands_title">
-                        <img src={siteLogoWhite} alt="" />
-                        <p>Executive Partners</p>
-                    </div>
-
-                    <h1>Trusted by leading brands</h1>
-
-                    <img className="brand_image" src={brandsImg} alt="" />
-                </div>
-
-                <div className="mission animate-fade-up">
-                    <div className="mission_title">
-                        <img src={siteLogoWhite} alt="" />
-                        <p>Vision Mission</p>
-                    </div>
-
-                    <h1>Driving excellence and innovation <br /> in car rental services</h1>
-
-                    <div className="mis">
-                        <div style={{ backgroundColor: vission ? "rgb(255, 45, 45)" : "white", color: vission ? "white" : "black" }} onClick={handleVission} className="vision">
-                            <p>Our Vision</p>
-                        </div>
-
-                        <div style={{ backgroundColor: mission ? "rgb(255, 45, 45)" : "white", color: mission ? "white" : "black" }} onClick={handleMission} className="miss">
-                            <p>Our Mission</p>
-                        </div>
-
-                        <div style={{ backgroundColor: approach ? "rgb(255, 45, 45)" : "white", color: approach ? "white" : "black" }} onClick={handleApproach} className="approach">
-                            <p>Our Approach</p>
-                        </div>
-                    </div>
-
-                    <div className="mission_bottom">
-                        <div className="mission_left animate-slide-right">
-                            <div className="mis_left">
-                                <img src={siteLogoWhite} alt="" />
-                                <p>Our {title}</p>
-                            </div>
-
-                            <h1>Pioneering excellence in <br /> car rental services</h1>
-
-                            <p className="mission_info">We aim to continually innovate and integrate the latest technology into our <br /> services. From easy online bookings to advanced vehicle tracking systems, our goal <br /> is to make the car rental process seamless and efficient for our customers. Quality <br /> is at the heart of everything we do. We maintain a diverse fleet of well-maintained <br /> vehicles that meet the highest standards of safety and comfort.</p>
-
-                            <div style={{ marginTop: "40px" }} className="like">
-                                <img src={likeImg} alt="" />
-                                <p>Our customers are our top priority</p>
-                            </div>
-
-                            <div className="like">
-                                <img src={likeImg} alt="" />
-                                <p>Quality is at the heart of everything we do</p>
-                            </div>
-
-                            <div className="like">
-                                <img src={likeImg} alt="" />
-                                <p>every vehicle leaves care looking its absolute best</p>
-                            </div>
-                        </div>
-
-                        <div className="mission_right animate-slide-left">
-                            <img className="animate-zoom-rotate" src={carImage} alt="" />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="choose animate-fade-up">
-                    <div className="choose_title">
-                        <img src={siteLogoWhite} alt="" />
-                        <p>Why Choose Us</p>
-                    </div>
-
-                    <h1>Unmatched quality and service <br /> for your needs</h1>
-
-                    <div className="choose_bottom">
-                        <div className="choose_left">
-                            <div className="fleet_op">
-                                <img src={fleet1} alt="" />
-                                <div className="op_right">
-                                    <h1>Extensive Fleet Options</h1>
-                                    <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere <br /> Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
-                                </div>
-                            </div>
-
-                            <div className="ser">
-                                <img src={fleet2} alt="" />
-                                <div className="ser_right">
-                                    <h1>Exceptional Customer Service</h1>
-                                    <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere <br /> Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="choose_middle">
-                            <img src={fleetMiddle} alt="" />
-                        </div>
-
-                        <div className="choose_right">
-                            <div className="fleet_op">
-                                <img src={fleet3} alt="" />
-                                <div className="op_right">
-                                    <h1 style={{ marginLeft: "-120px" }}>Convenient Locations</h1>
-                                    <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere <br /> Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
-                                </div>
-                            </div>
-
-                            <div className="ser">
-                                <img src={fleet4} alt="" />
-                                <div className="ser_right">
-                                    <h1 style={{ marginLeft: "-120px" }}>Reliability And Safety</h1>
-                                    <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere <br /> Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+        <div>
+            <div className="page-hero-banner" style={{ backgroundImage: `url(${bg})` }}>
+                <div className="label-pill justify-center">About Us</div>
+                <h1 className="hero-animate-1 font-bold text-white text-4xl md:text-5xl tracking-tight mb-4">About Novaride</h1>
+                <nav className="hero-animate-2 flex items-center gap-2 text-sm text-white/50">
+                    <Link to="/" className="hover:text-white transition-colors">Home</Link>
+                    <span>/</span><span className="text-brand">About Us</span>
+                </nav>
             </div>
-        </>
+
+            {/* About */}
+            <section className="max-w-7xl mx-auto px-5 md:px-8 xl:px-12 py-24">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 items-center">
+                    <div className="relative" data-reveal="left">
+                        <div className="rounded-3xl overflow-hidden aspect-[4/3] border border-gray-100 shadow-lg">
+                            <img src={aboutLeftImg} alt="About" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="absolute -bottom-5 -right-4 md:-right-8 p-4 rounded-2xl animate-float bg-white shadow-lg border border-gray-100">
+                            <p className="text-gray-900 font-bold text-3xl">8+</p>
+                            <p className="text-gray-400 text-sm">Years of Excellence</p>
+                        </div>
+                    </div>
+                    <div data-reveal="right">
+                        <div className="label-pill">About Us</div>
+                        <h2 className="section-heading mb-5">Your Trusted Partner<br />in Reliable Car Rental</h2>
+                        <p className="text-gray-500 leading-7 mb-8">
+                            Since our founding, Novaride has been committed to delivering an unmatched rental experience —
+                            pairing premium vehicles with exceptional service at every touchpoint.
+                        </p>
+                        <div className="flex flex-col gap-5 mb-10">
+                            {[
+                                { icon: bookingImg, title: "Easy Booking Process",        desc: "Reserve your perfect vehicle in under 2 minutes." },
+                                { icon: pickupImg,  title: "Convenient Pick-Up & Return", desc: "Flexible locations and timings to fit perfectly into your schedule." },
+                            ].map(item => (
+                                <div key={item.title} className="flex items-start gap-4">
+                                    <div className="w-12 h-12 rounded-xl bg-brand/8 border border-brand/15 flex items-center justify-center flex-shrink-0">
+                                        <img src={item.icon} alt={item.title} className="w-6 h-6 object-contain" />
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold text-gray-900 mb-1">{item.title}</p>
+                                        <p className="text-gray-500 text-sm leading-6">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <Link to="/contact" className="btn-primary">Get In Touch</Link>
+                    </div>
+                </div>
+            </section>
+
+            <div className="section-divider" />
+
+            {/* Brands */}
+            <section className="max-w-7xl mx-auto px-5 md:px-8 xl:px-12 py-20" data-reveal>
+                <div className="text-center mb-10">
+                    <div className="label-pill justify-center">Executive Partners</div>
+                    <h2 className="section-heading">Trusted by Leading Brands</h2>
+                </div>
+                <div className="rounded-2xl p-6 overflow-hidden border border-gray-100 bg-white">
+                    <img src={brandsImg} alt="Partner brands" className="w-full object-contain max-h-24 opacity-60 hover:opacity-100 transition-all duration-500" />
+                </div>
+            </section>
+
+            <div className="section-divider" />
+
+            {/* Vision/Mission/Approach */}
+            <section className="max-w-7xl mx-auto px-5 md:px-8 xl:px-12 py-24">
+                <div className="text-center mb-12" data-reveal>
+                    <div className="label-pill justify-center">Vision & Mission</div>
+                    <h2 className="section-heading mb-4">Driving Excellence &<br />Innovation in Car Rental</h2>
+                </div>
+                <div className="flex justify-center gap-2 mb-12" data-reveal>
+                    {TABS.map(tab => (
+                        <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+                            className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all border ${
+                                activeTab === tab.id
+                                    ? 'bg-brand text-white border-brand'
+                                    : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:text-gray-900'
+                            }`}>
+                            {tab.label}
+                        </button>
+                    ))}
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-reveal="left">
+                        <div className="label-pill">{currentTab.label}</div>
+                        <h3 className="font-bold text-gray-900 text-2xl md:text-3xl leading-snug mb-5">
+                            Pioneering Excellence in<br />Car Rental Services
+                        </h3>
+                        <p className="text-gray-500 leading-7 mb-8">{currentTab.desc}</p>
+                        <p className="text-gray-500 leading-7 mb-8">
+                            Quality is at the heart of everything we do. We maintain a diverse fleet of well-maintained
+                            vehicles that meet the highest standards of safety and comfort.
+                        </p>
+                        <div className="flex flex-col gap-3.5">
+                            {["Our customers are our top priority", "Quality is at the heart of everything we do", "Every vehicle leaves care looking its absolute best"].map(t => <FeatureItem key={t} text={t} />)}
+                        </div>
+                    </div>
+                    <div data-reveal="right">
+                        <div className="rounded-3xl overflow-hidden aspect-[4/3] border border-gray-100 shadow-lg">
+                            <img src={currentTab.image} alt={currentTab.label} key={currentTab.id} className="w-full h-full object-cover transition-all duration-500" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div className="section-divider" />
+
+            {/* Why Choose Us */}
+            <section className="py-24" style={{ background: '#f0f2f5' }}>
+                <div className="max-w-7xl mx-auto px-5 md:px-8 xl:px-12">
+                    <div className="text-center max-w-xl mx-auto mb-14" data-reveal>
+                        <div className="label-pill justify-center">Why Choose Us</div>
+                        <h2 className="section-heading">Unmatched Quality<br />and Service</h2>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        {features.map((f, i) => (
+                            <div key={f.title} className="card-base p-6 flex flex-col gap-4"
+                                data-reveal="scale" style={{ transitionDelay: `${i * 80}ms` }}>
+                                <div className="text-3xl">{f.icon}</div>
+                                <div>
+                                    <h3 className="font-semibold text-gray-900 mb-2">{f.title}</h3>
+                                    <p className="text-gray-500 text-sm leading-6">{f.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </div>
     );
 };
 
